@@ -274,3 +274,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between
 footer .fnav{display:flex;flex-wrap:wrap;gap:.9rem}
 footer .fnav a{color:#8FA6B4;text-decoration:none}
 footer .fnav a:hover{color:var(--peak)}
+
+
+/* ---------- live metrics + visitor counter ---------- */
+.metrics-note{margin:0;padding:0 0 1.1rem;text-align:center}
+.metrics-note a{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;
+  text-transform:uppercase;color:#7B92A2;text-decoration:none}
+.metrics-note a:hover{color:var(--peak)}
+.visits{visibility:hidden}
+.visits.ready{visibility:visible}
+.visits b{color:var(--peak);font-weight:600;letter-spacing:.04em}
