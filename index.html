@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dr. Jegyasu — RF Scientist | Metamaterials for MRI</title>
+<meta name="description" content="Dr. Jegyasu — RF Scientist at the Berlin Ultrahigh Field Facility, Max Delbrück Center. Electromagnetic metamaterials, metasurfaces and RF coil engineering for magnetic resonance imaging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bore:#0A121C;
+  --bore-2:#111E2C;
+  --paper:#EDF1F4;
+  --card:#F8FAFB;
+  --ink:#0B1420;
+  --flux:#1CA79E;
+  --flux-dim:#7FC9C4;
+  --peak:#E8A600;
+  --muted:#5D6E7E;
+  --rule:#D2DBE1;
+  --maxw:1080px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- shared type ---------- */
+.eyebrow{
+  font-family:var(--mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--flux);
+  margin:0 0 .9rem;
+}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;line-height:1.05;margin:0}
+h2.sec-title{font-size:clamp(1.9rem,4.2vw,2.9rem);letter-spacing:-.02em;margin-bottom:.5rem}
+.sec-lede{color:var(--muted);max-width:60ch;margin:0 0 2.4rem;font-size:1.02rem}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,5vw,34px)}
+section{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:0}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:60;background:rgba(237,241,244,.88);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,5vw,34px);
+  display:flex;align-items:center;gap:1rem;height:56px}
+.brand{font-family:var(--mono);font-size:.78rem;font-weight:600;letter-spacing:.08em;
+  text-decoration:none;white-space:nowrap}
+.brand span{color:var(--flux)}
+.nav-links{margin-left:auto;display:flex;gap:.15rem;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;color:var(--muted);padding:.45rem .6rem;border-radius:4px;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--ink);background:#fff}
+.nav-links a.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--peak)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;background:var(--bore);color:#E7EEF2;overflow:hidden;
+  padding:clamp(70px,11vw,124px) 0 clamp(46px,6vw,64px);border-top:0;
+}
+#lattice{position:absolute;inset:0;width:100%;height:100%;opacity:.8;pointer-events:none}
+.hero-in{position:relative;z-index:2;pointer-events:none}
+.hero .eyebrow{color:var(--flux-dim)}
+.hero h1{
+  font-size:clamp(2.9rem,9.5vw,6.2rem);letter-spacing:-.035em;margin:0 0 .1em;
+}
+.hero h1 em{font-style:normal;color:var(--peak)}
+.role{
+  font-family:var(--mono);font-size:clamp(.76rem,1.9vw,.88rem);letter-spacing:.05em;
+  color:#9FB4C1;margin:0 0 1.4rem;
+}
+.thesis{font-size:clamp(1.05rem,2.3vw,1.28rem);max-width:52ch;color:#CBDAE2;margin:0 0 2rem}
+.thesis b{color:#fff;font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.6rem;pointer-events:auto}
+.btn{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;padding:.62rem 1.05rem;border-radius:2px;border:1px solid #2E4356;
+  color:#DCE7ED;transition:.18s;
+}
+.btn:hover{border-color:var(--flux);color:#fff;background:rgba(28,167,158,.14)}
+.btn.solid{background:var(--peak);color:#1A1200;border-color:var(--peak);font-weight:600}
+.btn.solid:hover{background:#FFBE1A;color:#1A1200}
+
+/* ---------- metrics ---------- */
+.metrics{background:var(--bore-2);color:#DCE7ED;border-top:1px solid #1E3040;padding:0}
+.metrics-in{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,5vw,34px);
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}
+.metric{padding:1.5rem .4rem;border-left:1px solid #1E3040}
+.metric:first-child{border-left:0}
+.metric b{display:block;font-family:var(--display);font-size:1.85rem;font-weight:800;
+  color:var(--peak);line-height:1}
+.metric span{font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;
+  text-transform:uppercase;color:#8FA6B4}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(2rem,5vw,3.6rem);align-items:start}
+.about-grid p{margin:0 0 1.1rem}
+.facts{border:1px solid var(--rule);background:var(--card);padding:1.4rem 1.5rem;border-radius:3px}
+.facts dl{margin:0;display:grid;grid-template-columns:1fr;gap:.9rem}
+.facts dt{font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--flux);margin-bottom:.15rem}
+.facts dd{margin:0;font-size:.94rem;line-height:1.45}
+.path{font-family:var(--mono);font-size:.78rem;color:var(--muted);line-height:1.9}
+.path b{color:var(--ink);font-weight:600}
+
+/* ---------- research ---------- */
+.themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.theme{background:var(--card);padding:1.6rem 1.5rem;transition:background .2s}
+.theme:hover{background:#fff}
+.theme .num{font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;color:var(--flux);
+  display:block;margin-bottom:.7rem}
+.theme h3{font-size:1.12rem;letter-spacing:-.01em;margin-bottom:.55rem;font-weight:600}
+.theme p{margin:0;font-size:.93rem;color:var(--muted);line-height:1.55}
+
+/* ---------- image slots ---------- */
+.portrait{margin:0 0 1.2rem;border:1px solid var(--rule);background:var(--card);
+  border-radius:3px;overflow:hidden;position:relative;aspect-ratio:4/5}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.figstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1.2rem;margin-top:1.6rem}
+.fig{margin:0}
+.fig img{width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--rule);
+  border-radius:3px;background:var(--card)}
+.fig figcaption{font-family:var(--mono);font-size:.68rem;line-height:1.5;color:var(--muted);
+  margin-top:.55rem}
+.ph-note{display:none}
+.noimg img{display:none}
+.noimg .ph-note{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);background:repeating-linear-gradient(45deg,var(--card),var(--card) 9px,#E7ECF0 9px,#E7ECF0 18px);
+  border:1px dashed var(--rule);border-radius:3px;padding:1rem}
+.portrait.noimg{border:0}
+.portrait.noimg .ph-note{position:absolute;inset:0}
+.fig.noimg .ph-note{aspect-ratio:4/3}
+
+/* ---------- publications ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.chip{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.4rem .75rem;border:1px solid var(--rule);background:var(--card);border-radius:2px;
+  cursor:pointer;color:var(--muted);transition:.15s;
+}
+.chip:hover{border-color:var(--flux);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.searchrow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-bottom:1.6rem}
+#pubsearch{
+  flex:1 1 240px;font-family:var(--mono);font-size:.8rem;padding:.55rem .8rem;
+  border:1px solid var(--rule);background:#fff;border-radius:2px;color:var(--ink);
+}
+#pubsearch:focus{outline:2px solid var(--flux);outline-offset:1px}
+#pubcount{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.pub{padding:1.05rem 0;border-bottom:1px solid var(--rule)}
+.pub:first-child{border-top:1px solid var(--rule)}
+.pub-t{font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.3;
+  letter-spacing:-.005em;margin:0 0 .3rem}
+.pub-t a{text-decoration:none;background-image:linear-gradient(var(--peak),var(--peak));
+  background-size:0 2px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .22s}
+.pub-t a:hover{background-size:100% 2px}
+.pub-a{font-size:.88rem;color:var(--muted);margin:0 0 .35rem}
+.pub-a mark{background:none;color:var(--ink);font-weight:600}
+.pub-m{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.pub-m .venue{color:var(--ink)}
+.tag{border:1px solid var(--rule);padding:.1rem .42rem;border-radius:2px;background:var(--card)}
+.tag.q1{border-color:var(--flux);color:var(--flux)}
+.tag.award{border-color:var(--peak);color:#8A6400;background:#FFF6DF}
+.tag.rev{border-color:#B9C4CC;font-style:italic}
+.empty{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding:2rem 0}
+
+/* ---------- patents ---------- */
+.pat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.1rem}
+.pat{border:1px solid var(--rule);border-left:3px solid var(--peak);background:var(--card);
+  padding:1.35rem 1.4rem;border-radius:2px}
+.pat .no{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--peak);
+  display:block;margin-bottom:.55rem}
+.pat h3{font-size:1rem;font-weight:600;line-height:1.35;margin-bottom:.5rem}
+.pat p{margin:0;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.pat a{color:var(--flux)}
+.venture{margin-top:1.6rem;border:1px solid var(--rule);background:var(--bore);color:#CBDAE2;
+  padding:1.7rem 1.6rem;border-radius:3px}
+.venture h3{color:#fff;font-size:1.25rem;margin-bottom:.5rem}
+.venture .tagline{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--peak);margin:0 0 .9rem}
+.venture p{margin:0;font-size:.96rem}
+
+/* ---------- teaching / awards ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.4rem);align-items:start}
+.tlist{margin:0;padding:0;list-style:none}
+.tlist li{padding:.95rem 0;border-bottom:1px solid var(--rule)}
+.tlist li:first-child{border-top:1px solid var(--rule)}
+.tlist h4{font-size:.99rem;font-weight:600;margin-bottom:.2rem}
+.tlist .where{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--flux);
+  display:block;margin-bottom:.35rem}
+.tlist p{margin:0;font-size:.9rem;color:var(--muted);line-height:1.5}
+.awards{margin:0;padding:0;list-style:none}
+.awards li{display:flex;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--rule);
+  font-size:.95rem;align-items:baseline}
+.awards li:first-child{border-top:1px solid var(--rule)}
+.awards .yr{font-family:var(--mono);font-size:.72rem;color:var(--peak);flex:0 0 3.1rem;font-weight:600}
+.awards .what b{font-weight:600}
+.awards .what span{display:block;font-size:.85rem;color:var(--muted)}
+
+/* ---------- skills ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem 2.4rem}
+.skill h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--flux);font-weight:600;margin-bottom:.5rem}
+.skill p{margin:0;font-size:.93rem;color:var(--muted);line-height:1.55}
+
+/* ---------- contact ---------- */
+.contact{background:var(--bore);color:#CBDAE2;border-top:0}
+.contact h2{color:#fff}
+.contact .sec-lede{color:#9FB4C1}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.4rem);align-items:start}
+.ct-line{display:flex;gap:.9rem;padding:.7rem 0;border-bottom:1px solid #1E3040;font-size:.95rem;
+  align-items:baseline;flex-wrap:wrap}
+.ct-line:first-child{border-top:1px solid #1E3040}
+.ct-line b{font-family:var(--mono);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--flux-dim);flex:0 0 5.2rem;font-weight:500}
+.ct-line a{color:#E7EEF2}
+.ct-line a:hover{color:var(--peak)}
+.refs{margin:0;padding:0;list-style:none;font-size:.92rem}
+.refs li{padding:.75rem 0;border-bottom:1px solid #1E3040}
+.refs li:first-child{border-top:1px solid #1E3040}
+.refs b{color:#fff;font-weight:600}
+.refs span{display:block;color:#8FA6B4;font-size:.84rem;line-height:1.45}
+.refs a{color:var(--flux-dim);font-family:var(--mono);font-size:.78rem}
+#copybtn{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:1px solid #2E4356;color:#9FB4C1;padding:.22rem .5rem;border-radius:2px;cursor:pointer}
+#copybtn:hover{border-color:var(--flux);color:#fff}
+footer{background:var(--bore);color:#63798A;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.05em;padding:1.6rem 0 2.4rem;border-top:1px solid #1E3040}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between}
+
+/* ---------- responsive ---------- */
+@media(max-width:820px){
+  .about-grid,.two,.ct-grid{grid-template-columns:1fr}
+  body{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+:focus-visible{outline:2px solid var(--peak);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">DR<span>·</span>JEGYASU</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#patents">Patents</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <svg id="lattice" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="wrap hero-in">
+    <p class="eyebrow">Berlin Ultrahigh Field Facility · Max Delbrück Center</p>
+    <h1>Dr. <em>Jegyasu</em></h1>
+    <p class="role">RF Scientist (Postdoctoral Researcher) &nbsp;·&nbsp; Ph.D., IIT Guwahati &nbsp;·&nbsp; Prime Minister's Research Fellow</p>
+    <p class="thesis">I build <b>metamaterials that make MRI scanners see more</b> — thin, wearable resonant structures that lift signal-to-noise and shorten scans, without modifying the scanner itself.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#publications">Publications</a>
+      <a class="btn" href="#research">Research</a>
+      <a class="btn" href="#patents">Patents &amp; startup</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<div class="metrics">
+  <div class="metrics-in">
+    <div class="metric"><b>14</b><span>Journal articles</span></div>
+    <div class="metric"><b>21</b><span>Conference papers</span></div>
+    <div class="metric"><b>2</b><span>Granted patents</span></div>
+    <div class="metric"><b>8</b><span>h-index</span></div>
+    <div class="metric"><b>191</b><span>Citations</span></div>
+    <div class="metric"><b>3</b><span>Best-paper / thesis awards</span></div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about"><div class="wrap">
+  <p class="eyebrow">About</p>
+  <h2 class="sec-title">From a small town in Ballia to an ultrahigh-field scanner in Berlin</h2>
+  <div class="about-grid">
+    <div>
+      <p>I am a postdoctoral RF scientist at the <b>Berlin Ultrahigh Field Facility (B.U.F.F.)</b>, Max Delbrück Center for Molecular Medicine, part of the Helmholtz Association, where I design radiofrequency coils and applicators for ultrahigh-field and thermal magnetic resonance in Prof. Thoralf Niendorf's group.</p>
+      <p>My doctorate at <b>IIT Guwahati</b>, held as a Prime Minister's Research Fellow and awarded the Institute's Best Ph.D. Thesis, asked a deliberately practical question: can a passive, low-cost structure placed on the patient recover image quality that would otherwise require a more expensive scanner? The answer became a body of work on metasurface wraps, high-Q spiral resonators and smart self-adaptive metamaterials for 1.5 T clinical MRI — validated not only in simulation but on real scanners, with hospital partners.</p>
+      <p>That work produced two granted Indian patents and a spin-out company. It has since carried into low-field imaging, at 50 mT for point-of-care MRI, and upward into 7 T and 9.4 T instrumentation. The thread throughout is the same: <b>electromagnetics in service of an image a clinician can actually use.</b></p>
+      <p>I am currently preparing a Marie Skłodowska-Curie Postdoctoral Fellowship on reconfigurable metamaterial applicators for target-conformal thermal MR, and I am seeking a faculty position to build an independent RF, microwave and electromagnetics laboratory.</p>
+    </div>
+    <aside>
+      <figure class="portrait">
+        <!-- REPLACE: put your photo at images/portrait.jpg (portrait crop, ~800x1000px) -->
+        <img src="images/portrait.jpg" alt="Dr. Jegyasu" onerror="this.closest('.portrait').classList.add('noimg')">
+        <span class="ph-note">Portrait &rarr; images/portrait.jpg</span>
+      </figure>
+      <div class="facts">
+      <dl>
+        <div><dt>Position</dt><dd>RF Scientist, B.U.F.F., Max Delbrück Center, Berlin</dd></div>
+        <div><dt>Ph.D.</dt><dd>Electronics &amp; Electrical Engineering, IIT Guwahati (2026)<br><em>The Role of Metamaterials in Improving Magnetic Resonance Imaging</em></dd></div>
+        <div><dt>M.Tech.</dt><dd>NIT Delhi — plasmonic fibre-optic sensing</dd></div>
+        <div><dt>Route</dt><dd class="path">
+          <b>Ballia, U.P.</b><br>↓<br>FGIET Rae Bareli<br>↓<br>NIT Delhi<br>↓<br>IIT Guwahati<br>↓<br><b>MDC Berlin</b>
+        </dd></div>
+      </dl>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research"><div class="wrap">
+  <p class="eyebrow">Research</p>
+  <h2 class="sec-title">Four lines of work</h2>
+  <p class="sec-lede">All four share one method: solve the electromagnetic problem analytically, verify it in full-wave simulation, then build it and put it in a scanner.</p>
+  <div class="themes">
+    <article class="theme">
+      <span class="num">01 / MRI</span>
+      <h3>Metasurface add-ons for clinical MRI</h3>
+      <p>Thin, flexible, wearable resonant wraps that locally boost the transmit and receive magnetic field at 63.87 MHz. Spiral quartets, coupled octa-spirals, interconnected rectangular windings — all designed to raise SNR on an unmodified 1.5 T scanner.</p>
+    </article>
+    <article class="theme">
+      <span class="num">02 / RF</span>
+      <h3>RF coils across field strengths</h3>
+      <p>Transmit and receive coil design, tuning, matching, prototyping and phantom validation from portable 50 mT systems through clinical 1.5 T to ultrahigh-field 7 T and 9.4 T — including bow-tie antenna arrays for thermal MR at 297 MHz.</p>
+    </article>
+    <article class="theme">
+      <span class="num">03 / Thermal MR</span>
+      <h3>Target-conformal thermal magnetic resonance</h3>
+      <p>Reconfigurable metamaterial applicators that steer RF energy toward a tumour while suppressing surface hotspots. Time-multiplexed beamforming and SAR-constrained optimisation for extremity sarcoma and brain tumours.</p>
+    </article>
+    <article class="theme">
+      <span class="num">04 / Photonics</span>
+      <h3>Nanophotonics &amp; plasmonic sensing</h3>
+      <p>Electro-tunable metasurfaces for polarisation switching, energy-saving all-weather windows, and fluoride-fibre surface-plasmon-resonance sensors using multilayer 2D materials — the optical end of the same physics.</p>
+    </article>
+  </div>
+
+  <div class="figstrip">
+    <!-- REPLACE each src below with your own figures. Captions are editable text. -->
+    <figure class="fig">
+      <img src="images/fig1.jpg" alt="" onerror="this.closest('.fig').classList.add('noimg')">
+      <span class="ph-note">images/fig1.jpg</span>
+      <figcaption>Simulated <em>B</em><sub>1</sub> field map with and without the metasurface wrap.</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="images/fig2.jpg" alt="" onerror="this.closest('.fig').classList.add('noimg')">
+      <span class="ph-note">images/fig2.jpg</span>
+      <figcaption>Fabricated flexible wrap on the bench, before scanner validation.</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="images/fig3.jpg" alt="" onerror="this.closest('.fig').classList.add('noimg')">
+      <span class="ph-note">images/fig3.jpg</span>
+      <figcaption>Phantom scan at 1.5 T &mdash; SNR gain over the reference acquisition.</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications"><div class="wrap">
+  <p class="eyebrow">Publications</p>
+  <h2 class="sec-title">Peer-reviewed work</h2>
+  <p class="sec-lede">14 journal articles and 21 international conference papers. Filter by type, topic, or authorship — or search by title, venue or co-author.</p>
+
+  <div class="filters" id="filters">
+    <button class="chip" data-f="all" aria-pressed="true">All</button>
+    <button class="chip" data-f="journal" aria-pressed="false">Journals</button>
+    <button class="chip" data-f="conference" aria-pressed="false">Conferences</button>
+    <button class="chip" data-f="first" aria-pressed="false">First author</button>
+    <button class="chip" data-f="MRI metasurfaces" aria-pressed="false">MRI metasurfaces</button>
+    <button class="chip" data-f="RF coils" aria-pressed="false">RF coils</button>
+    <button class="chip" data-f="Nanophotonics" aria-pressed="false">Nanophotonics</button>
+    <button class="chip" data-f="Plasmonic sensing" aria-pressed="false">Plasmonic sensing</button>
+    <button class="chip" data-f="6G" aria-pressed="false">6G</button>
+  </div>
+  <div class="searchrow">
+    <input id="pubsearch" type="search" placeholder="Search titles, venues, co-authors…" aria-label="Search publications">
+    <span id="pubcount"></span>
+  </div>
+  <div id="publist"></div>
+</div></section>
+
+<!-- ============ PATENTS ============ -->
+<section id="patents"><div class="wrap">
+  <p class="eyebrow">Patents &amp; technology transfer</p>
+  <h2 class="sec-title">From simulation to product</h2>
+  <p class="sec-lede">Two granted Indian patents, one licensed technology, and a deep-tech company built around them.</p>
+  <div class="pat-grid">
+    <article class="pat">
+      <span class="no">Indian Patent No. 583980 · Granted 19 Mar 2026</span>
+      <h3>A Metasurface-inspired Flexible Structure for Boosting the Signal-to-Noise Ratio (SNR) in 1.5T MRI Scans</h3>
+      <p>J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar · App. No. 202311058391 · <a href="https://drive.google.com/file/d/1G922fbAOn3WfeMteZ7anOG5FVe8soyUE/view?usp=sharing" target="_blank" rel="noopener">View patent →</a></p>
+    </article>
+    <article class="pat">
+      <span class="no">Indian Patent No. 579702 · Granted 02 Feb 2026</span>
+      <h3>A Magnetic Metamaterial Add-on for Improving the Signal-to-Noise Ratio of Magnetic Resonance Imaging</h3>
+      <p>J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar · App. No. 202311037880 · <a href="https://drive.google.com/file/d/14vC5qJFwRqEGj8LK177ROBld3BAiRmuL/view?usp=sharing" target="_blank" rel="noopener">View patent →</a></p>
+    </article>
+  </div>
+  <div class="venture">
+    <p class="tagline">Meta Samadhan Pvt. Ltd. — Innovating Beyond Natural Limits</p>
+    <h3>Co-founder</h3>
+    <p>An indigenous deep-tech startup incubated at iHUB DivyaSampark, IIT Roorkee, built on the patented metamaterial flexi-wrap technology. Meta Samadhan develops lightweight, wearable MRI-enhancement accessories for faster scans, better image quality and greater patient comfort — with a broader platform spanning smart electromagnetic systems, 6G, radiative cooling and smart windows.</p>
+  </div>
+</div></section>
+
+<!-- ============ TEACHING & LAB ============ -->
+<section id="teaching"><div class="wrap">
+  <p class="eyebrow">Teaching &amp; laboratory building</p>
+  <h2 class="sec-title">Classroom and bench</h2>
+  <div class="two">
+    <div>
+      <ul class="tlist">
+        <li>
+          <h4>Teaching Assistant — NPTEL Online Certification Courses</h4>
+          <span class="where">NPTEL, India · Jul 2023 – Oct 2025</span>
+          <p>Course design and delivery support for <em>Nanophotonics, Plasmonics &amp; Metamaterials</em>; <em>Introduction to Microwave and Optical Metamaterials</em>; <em>Photonic Crystals: Fundamentals and Applications</em> — reaching a national online cohort.</p>
+        </li>
+        <li>
+          <h4>Guest Lecturer (PMRF teaching modality)</h4>
+          <span class="where">Dept. of ECE, Gauhati University · Jan 2021 – Jul 2023</span>
+          <p>B.Tech. laboratory sessions and tutorials in Microprocessors and Signals &amp; Systems.</p>
+        </li>
+        <li>
+          <h4>Teaching Assistant</h4>
+          <span class="where">IIT Guwahati · Jul 2019 – May 2024</span>
+          <p>Digital Circuits; Analog Circuits Laboratory; Basic Electronics Laboratory; Nanophotonics, Plasmonics &amp; Metamaterials; Photonic Crystals.</p>
+        </li>
+        <li>
+          <h4>Teaching Assistant</h4>
+          <span class="where">NIT Delhi · Jul 2017 – Jul 2019</span>
+          <p>Undergraduate ECE coursework during the M.Tech. programme.</p>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:1.15rem;font-weight:600;margin-bottom:.8rem">Building the lab</h3>
+      <p style="font-size:.96rem;color:var(--muted);margin:0 0 1rem">I helped establish an advanced MRI RF laboratory in the EEE Department at IIT Guwahati for the design, fabrication and experimental validation of RF metamaterials and devices — supporting characterisation at clinical field strength (1.5 T, DST-funded) and low field (50 mT, Government of Assam initiative via AAHII).</p>
+      <div class="skills">
+        <div class="skill"><h4>Simulation</h4><p>CST Studio Suite (time- and frequency-domain, SAR with anatomical voxel models), OptiFDTD, MATLAB.</p></div>
+        <div class="skill"><h4>Bench &amp; measurement</h4><p>VNA characterisation, S-parameters, tuning and matching, coil fabrication, near-field probing, automated XYZ field mapping.</p></div>
+        <div class="skill"><h4>Scanner</h4><p>Hands-on operation of high- and ultrahigh-field scanners, imaging protocols, phantom development, RF safety.</p></div>
+        <div class="skill"><h4>Peer review</h4><p>Reviewer for Advanced Materials, Advanced Healthcare Materials, Advanced Physics Research, MOTL (Wiley); Magnetic Resonance Imaging, Brain Research Bulletin, Solar Energy Advances (Elsevier); Blue (Cell).</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ AWARDS ============ -->
+<section id="awards"><div class="wrap">
+  <p class="eyebrow">Honours</p>
+  <h2 class="sec-title">Awards &amp; fellowships</h2>
+  <div class="two">
+    <ul class="awards">
+      <li><span class="yr">2026</span><span class="what"><b>Best Ph.D. Thesis Award</b><span>IIT Guwahati, 28th Convocation</span></span></li>
+      <li><span class="yr">2025</span><span class="what"><b>Best Paper Award</b><span>IEEE Guwahati Subsection Conference (GCON), Itanagar</span></span></li>
+      <li><span class="yr">2023</span><span class="what"><b>Best Paper Award</b><span>International Electrical Engineering Congress (iEECON), Krabi, Thailand</span></span></li>
+      <li><span class="yr">2020</span><span class="what"><b>Prime Minister's Research Fellowship</b><span>Government of India — nationally competitive doctoral fellowship</span></span></li>
+      <li><span class="yr">—</span><span class="what"><b>Merit-cum-Means Scholarship</b><span>B.Tech. and Senior Secondary</span></span></li>
+    </ul>
+    <div>
+      <h3 style="font-size:1.15rem;font-weight:600;margin-bottom:.8rem">Funded projects</h3>
+      <ul class="tlist">
+        <li><h4>Metamaterials for low-field MRI (50 mT)</h4><span class="where">AAHII / IIT Guwahati · PI: Dr. Debabrata Sikdar</span></li>
+        <li><h4>Dedicated RF devices &amp; metamaterials for enhanced MRI</h4><span class="where">DST – Russian Science Foundation · PIs: Dr. D. Sikdar (IITG) &amp; Dr. I. V. Melchakova (ITMO)</span></li>
+        <li><h4>Thin flexible metamaterial add-ons for efficient, affordable MRI</h4><span class="where">iHUB DivyaSampark, IIT Roorkee · PI: Dr. Debabrata Sikdar</span></li>
+        <li><h4>Surface-plasmon-resonance optical sensors</h4><span class="where">NIT Delhi · PI: Dr. Anuj Kumar Sharma</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact"><div class="wrap">
+  <p class="eyebrow">Contact</p>
+  <h2 class="sec-title">Let's talk</h2>
+  <p class="sec-lede">Open to collaboration on RF coil engineering, metamaterials for imaging, and thermal MR — and to conversations about faculty positions.</p>
+  <div class="ct-grid">
+    <div>
+      <div class="ct-line"><b>Email</b><a href="mailto:jegyasu@mdc-berlin.de">jegyasu@mdc-berlin.de</a> <button id="copybtn" type="button">Copy</button></div>
+      <div class="ct-line"><b>Alt</b><a href="mailto:jegyasuiitg@gmail.com">jegyasuiitg@gmail.com</a></div>
+      <div class="ct-line"><b>Phone</b><span>+49 176 37026506 &nbsp;·&nbsp; +91 70710 77608</span></div>
+      <div class="ct-line"><b>Office</b><span>Office 2.12, Berlin Ultrahigh Field Facility, Building 88,<br>Max Delbrück Center, Robert-Rössle-Straße 10, 13125 Berlin</span></div>
+      <div class="ct-line"><b>Profiles</b><span>
+        <a href="https://scholar.google.com/citations?user=ivT6MMMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> ·
+        <a href="https://orcid.org/0000-0002-0579-778X" target="_blank" rel="noopener">ORCID</a> ·
+        <a href="http://www.linkedin.com/in/jegyasu" target="_blank" rel="noopener">LinkedIn</a>
+      </span></div>
+    </div>
+    <div>
+      <p class="eyebrow" style="color:var(--flux-dim)">References</p>
+      <ul class="refs">
+        <li><b>Dr. Debabrata Sikdar</b><span>Associate Professor, EEE &amp; Centre for Intelligent Cyber-Physical Systems, IIT Guwahati — Ph.D. advisor</span><a href="mailto:deb.sikdar@iitg.ac.in">deb.sikdar@iitg.ac.in</a></li>
+        <li><b>Prof. Ratnajit Bhattacharjee</b><span>Professor, EEE; Head, Mehta Family School of Data Science &amp; AI, IIT Guwahati</span><a href="mailto:ratnajit@iitg.ac.in">ratnajit@iitg.ac.in</a></li>
+        <li><b>Prof. Subramani Kanagaraj</b><span>Professor &amp; Head, Jyoti and Bhupat Mehta School of Health Sciences &amp; Technology, IIT Guwahati</span><a href="mailto:kanagaraj@iitg.ac.in">kanagaraj@iitg.ac.in</a></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© <span id="yr"></span> Dr. Jegyasu</span>
+  <span>Berlin · Guwahati</span>
+</div></footer>
+
+<script>
+/* ============ 1. Hero backdrop: B-field of a surface loop coil ============
+   Field lines of a magnetic dipole, r = R0*sin^2(theta). The coil sits at the
+   right edge; the field weakens as it reaches across the panel. That falloff
+   is the problem the research exists to solve, so it is drawn honestly. */
+(function(){
+  const svg = document.getElementById('lattice');
+  if(!svg) return;
+  const W = 1400, H = 620;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const NS = 'http://www.w3.org/2000/svg';
+
+  const cx = W*0.86, cy = H*0.50;       // coil position
+  const RMAX = 1500;
+
+  function fieldLine(R0){
+    let d = '', started = false;
+    for(let i = 1; i < 220; i++){
+      const th = (i/220)*Math.PI*2;
+      const r  = R0*Math.sin(th)*Math.sin(th);
+      const x  = cx - r*Math.cos(th);      // dipole axis points left
+      const y  = cy + r*Math.sin(th);
+      if(!isFinite(x) || !isFinite(y)) continue;
+      d += (started ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+      started = true;
+    }
+    return d + 'Z';
+  }
+
+  // 22 nested lines; near ones are hot, far ones fade to slate
+  for(let i = 0; i < 22; i++){
+    const f  = i/21;                                   // 0 = innermost
+    const R0 = 46 + Math.pow(f, 1.55)*RMAX;
+    const p  = document.createElementNS(NS,'path');
+    p.setAttribute('d', fieldLine(R0));
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke', f < 0.12 ? '#E8A600' : f < 0.34 ? '#1CA79E' : '#2A4356');
+    p.setAttribute('stroke-width', (1.5 - f*0.7).toFixed(2));
+    p.setAttribute('opacity', (0.85 - f*0.55).toFixed(2));
+    p.setAttribute('stroke-linejoin','round');
+    svg.appendChild(p);
+  }
+
+  // depth markers: the reach of the field, in centimetres
+  const axis = document.createElementNS(NS,'line');
+  axis.setAttribute('x1', 40); axis.setAttribute('x2', cx);
+  axis.setAttribute('y1', cy); axis.setAttribute('y2', cy);
+  axis.setAttribute('stroke','#1C2E3D'); axis.setAttribute('stroke-width','1');
+  axis.setAttribute('stroke-dasharray','3 7');
+  svg.appendChild(axis);
+
+  // the coil itself, seen edge-on
+  const coil = document.createElementNS(NS,'ellipse');
+  coil.setAttribute('cx', cx); coil.setAttribute('cy', cy);
+  coil.setAttribute('rx', 7); coil.setAttribute('ry', 62);
+  coil.setAttribute('fill','none');
+  coil.setAttribute('stroke','#E8A600'); coil.setAttribute('stroke-width','3');
+  svg.appendChild(coil);
+})();
+
+/* ================= 2. Publications ================= */
+const PUBS = [
+ /* --- Journals --- */
+ {t:"Smart and Flexible Metasurface-Inspired Wraps as \u201cAdd-ons\u201d for Enhanced Magnetic Resonance Imaging",a:"J. Gupta, A. B. Dey, S. Kanagaraj, R. Bhattacharjee, D. Sikdar",v:"Applied Physics A, 132(1), 149",y:2026,k:"journal",g:"MRI metasurfaces",q:"Q2",first:true,u:"https://link.springer.com/article/10.1007/s00339-026-09305-8"},
+ {t:"Flexible and Wearable Metasurfaces of Spiral Quartet Arrays for Boosting SNR of 1.5T Magnetic Resonance Imaging",a:"J. Gupta, R. Bhattacharjee, S. Kanagaraj, D. Sikdar",v:"Advanced Engineering Materials, 27(16), 202500155",y:2025,k:"journal",g:"MRI metasurfaces",q:"Q1",first:true,u:"https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/adem.202500155"},
+ {t:"Improving Signal-to-Noise Ratio of 1.5T MRI Scans using High-Q Resonators based on Coupled Octa-Spirals",a:"J. Gupta, R. Bhattacharjee, S. Kanagaraj, D. Sikdar",v:"Advanced Theory and Simulations, 8(2), 2400848",y:2025,k:"journal",g:"MRI metasurfaces",q:"Q1",first:true,u:"https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/adts.202400848"},
+ {t:"Resonating Sub-Wavelength Metallic Wires based Pads for Boosting Signal-to-Noise Ratio of Birdcage Head Coils at 1.5T MRI",a:"J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar",v:"Results in Physics, 53, 106972",y:2023,k:"journal",g:"RF coils",q:"Q1",first:true,u:"https://www.sciencedirect.com/science/article/pii/S2211379723007659"},
+ {t:"Enhancing Signal-to-Noise Ratio of Clinical MRIs using RF Metasurface-Inspired Flexible Wraps",a:"J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar",v:"Applied Physics A, 129(10), 725",y:2023,k:"journal",g:"MRI metasurfaces",q:"Q2",first:true,u:"https://link.springer.com/article/10.1007/s00339-023-06962-x"},
+ {t:"Conformal Metasurface with Nested Resonant Structures to Enhance SNR in 1.5T MRI Scans",a:"A. B. Dey, J. Gupta, G. Kumar, S. Kanagaraj, R. Bhattacharjee, D. Sikdar",v:"IEEE J. Electromagnetics, RF and Microwaves in Medicine and Biology",y:2026,k:"journal",g:"MRI metasurfaces",q:"Q1",rev:true,u:""},
+ {t:"A Smart Metasurface for Scanning Deep Brain Tissues at 1.5T MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"Current Applied Physics, 53, 172\u2013180",y:2023,k:"journal",g:"MRI metasurfaces",q:"Q2",u:"https://www.sciencedirect.com/science/article/pii/S1567173923001578"},
+ {t:"A Non-Linear Triangular Split-Ring based Metaresonator for Targeted Scanning at 1.5T MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"Physica Scripta, 98, 065004",y:2023,k:"journal",g:"MRI metasurfaces",q:"Q2",u:"https://iopscience.iop.org/article/10.1088/1402-4896/accf49/meta"},
+ {t:"Aperture-Patch Sandwich Metasurface for Magnetic Field Enhancement in 1.5T MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"Magnetic Resonance Imaging, 100, 1\u20139",y:2023,k:"journal",g:"MRI metasurfaces",q:"Q2",u:"https://www.sciencedirect.com/science/article/pii/S0730725X23000528"},
+ {t:"Electro-tunable Metasurface for Tri-State Dynamic Polarization Switching at Near-Infrared Wavelengths",a:"T. Bhowmik, J. Gupta, D. Sikdar",v:"Journal of Physics: Condensed Matter, 35(39), 395701",y:2023,k:"journal",g:"Nanophotonics",q:"Q2",u:"https://iopscience.iop.org/article/10.1088/1361-648X/ace01b/meta"},
+ {t:"A Thin Metallo-Dielectric Stacked Metamaterial as Add-on for Magnetic Field Enhancement in Clinical MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"Journal of Applied Physics, 132, 114901",y:2022,k:"journal",g:"MRI metasurfaces",q:"Q2",u:"https://pubs.aip.org/aip/jap/article/132/11/114901/2837478"},
+ {t:"Energy-Saving All-Weather Window based on Selective Filtering of Solar Spectral Radiation",a:"A. K. Chowdhary, T. Bhowmik, J. Gupta, D. Sikdar",v:"Applied Optics, 60(5), 1315\u20131325",y:2021,k:"journal",g:"Nanophotonics",q:"Q1",u:"https://opg.optica.org/ao/fulltext.cfm?uri=ao-60-5-1315&id=447482"},
+ {t:"Simulation and Comprehensive Analysis of Fluoride Fiber SPR Sensor with Multilayer Variants of 2D Materials (Graphene and MoS\u2082) under Optimum Radiation Damping in NIR",a:"A. K. Sharma, J. Gupta",v:"IEEE Sensors Journal, 19, 8775\u20138780",y:2019,k:"journal",g:"Plasmonic sensing",q:"Q1",u:"https://ieeexplore.ieee.org/abstract/document/8736250"},
+ {t:"Fluoride Fiber Plasmonic Sensor with Multilayer Variants of Tungsten Disulfide (WS\u2082): Seeking Enhanced Figure-of-Merit via Thermo-Optic Tuning of Radiation Damping",a:"A. K. Sharma, J. Gupta",v:"Optical Fiber Technology, 53, 102037",y:2019,k:"journal",g:"Plasmonic sensing",q:"Q2",u:"https://www.sciencedirect.com/science/article/pii/S1068520019302251"},
+
+ /* --- Conferences --- */
+ {t:"Boosting Performance of 1.5T MRI using Switchable Metasurface Wraps Composed of Interconnected Rectangular Windings",a:"J. Gupta, A. B. Dey, T. Bhowmik, R. Bhattacharjee, S. Kanagaraj, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Itanagar, India",y:2025,k:"conference",g:"MRI metasurfaces",first:true,award:"Best Paper",u:"https://ieeexplore.ieee.org/xpl/conhome/10183386/proceeding"},
+ {t:"Improving SNR of 1.5T MRI using Flexible Magnetic Metasurfaces based on Rectangular Windings",a:"J. Gupta, R. Bhattacharjee, S. Kanagaraj, R. Nair, D. Sikdar",v:"NUSOD, New Delhi, India",y:2024,k:"conference",g:"MRI metasurfaces",first:true,u:"https://ieeexplore.ieee.org/abstract/document/10723662"},
+ {t:"Magneto-active Metamaterials for 1.5T MRI: An Intelligent Approach to Boost the Signal-to-Noise Ratio of a Scan",a:"J. Gupta, R. Bhattacharjee, S. Kanagaraj, R. Nair, D. Sikdar",v:"NUSOD, New Delhi, India",y:2024,k:"conference",g:"MRI metasurfaces",first:true,u:"https://ieeexplore.ieee.org/abstract/document/10723549"},
+ {t:"Complementary-Bowtie-Aperture Inspired Wearable Metasurfaces for Boosting SNR in 1.5T MRI Systems",a:"J. Gupta, R. Bhattacharjee, S. Kanagaraj, R. Harsh, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Guwahati, India",y:2023,k:"conference",g:"MRI metasurfaces",first:true,u:"https://ieeexplore.ieee.org/abstract/document/10183478"},
+ {t:"Flexible Metasurface-Based Wraps for Improving Magnetic Field Enhancement in 1.5T MRI",a:"J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar",v:"CLEO, San Jose, CA, USA",y:2023,k:"conference",g:"MRI metasurfaces",first:true,u:"https://opg.optica.org/abstract.cfm?uri=CLEO_AT-2023-JTu2A.2"},
+ {t:"Capacitively-loaded Spiral Array based RF Metasurfaces for Boosting the Performance of 1.5T MRI",a:"J. Gupta, P. Das, R. Bhattacharjee, D. Sikdar",v:"International Electrical Engineering Congress (iEECON), Krabi, Thailand",y:2023,k:"conference",g:"MRI metasurfaces",first:true,award:"Best Paper",u:"https://ieeexplore.ieee.org/abstract/document/10126619"},
+ {t:"Boosting Received Magnetic Field Strength using Wearable Metasurface-based Add-ons for 1.5T MRI",a:"J. Gupta, T. Bhowmik, R. Bhattacharjee, D. Sikdar",v:"META \u2014 Metamaterials, Photonic Crystals and Plasmonics, Paris, France",y:2023,k:"conference",g:"MRI metasurfaces",first:true,u:"https://drive.google.com/file/d/1pl66WMLMpllTlJqq0xJ0qFV5uA6kLCg2/view?usp=sharing"},
+ {t:"RF Metasurface Based \u2018Add-Ons\u2019 for Boosting Signal-to-Noise Ratio of 1.5T MRI Scans",a:"J. Gupta, P. Das, T. Bhowmik, R. Bhattacharjee, D. Sikdar",v:"National Conference on Communications (NCC), Guwahati, India",y:2023,k:"conference",g:"MRI metasurfaces",first:true,u:"https://ieeexplore.ieee.org/abstract/document/10067982"},
+ {t:"Thin-Wire Array based Resonator for Targeted Clinical 1.5T Magnetic Resonance Imaging",a:"J. Gupta, P. Das, A. K. Chowdhary, R. Bhattacharjee, D. Sikdar",v:"IEEE Photonics Conference (IPC), Vancouver, BC, Canada",y:2022,k:"conference",g:"MRI metasurfaces",first:true,u:"https://ieeexplore.ieee.org/abstract/document/9975742"},
+ {t:"Metamaterial-inspired Orthogonally Aligned Shifted Ring Resonator Array (SRRA) for Enhancing Signal-to-Noise Ratio of 1.5T MRI Scans",a:"A. B. Dey, J. Gupta, G. Kumar, S. Kanagaraj, R. Bhattacharjee, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Itanagar, India",y:2025,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/11173416"},
+ {t:"Design and Analysis of Metasurfaces Comprising Dumbbell-Shaped Cross-Grids for Magnetic Field Enhancement in MRI",a:"G. Kumar, J. Gupta, A. B. Dey, D. Biswas, R. Bhattacharjee, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Itanagar, India",y:2025,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/11173403"},
+ {t:"Quadra-Ring SRR Metamaterials: A Novel Design for Enhancement of Magnetic Field in 1.5T MRI Scans",a:"A. B. Dey, J. Gupta, G. Kumar, S. Kanagaraj, R. Bhattacharjee, D. Sikdar",v:"IEEE Silchar Subsection Conference (SILCON), Agartala, India",y:2024,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/10910553"},
+ {t:"Development and Benchmark Analysis of a Birdcage-Based Volume Coil for Dedicated Knee Scanning at 1.5T",a:"G. Kumar, A. B. Dey, J. Gupta, S. Kanagaraj, R. Bhattacharjee, D. Sikdar",v:"IEEE Silchar Subsection Conference (SILCON), Agartala, India",y:2024,k:"conference",g:"RF coils",u:"https://ieeexplore.ieee.org/abstract/document/10910709"},
+ {t:"Interdigitated Metasurfaces for Enabling Homogeneously Boosted Magnetic Fields during 1.5T MRI Scans",a:"T. S. Konda, J. Gupta, A. B. Dey, R. Bhattacharjee, D. Sikdar",v:"NUSOD, New Delhi, India",y:2024,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/10723399"},
+ {t:"Mirrored-Twin Rectangular SRR Based Metamaterial for Improving Signal-to-Noise Ratio of 1.5T MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"CLEO, San Jose, CA, USA",y:2023,k:"conference",g:"MRI metasurfaces",u:"https://opg.optica.org/abstract.cfm?uri=cleo_at-2023-AM4Q.1"},
+ {t:"Gap-plasmon Resonance based Energy-efficient Electro-tunable Metasurface for Polarization-independent Optical Intensity Modulation",a:"T. Bhowmik, J. Gupta, D. Sikdar",v:"META, Paris, France",y:2023,k:"conference",g:"Nanophotonics",u:"https://drive.google.com/file/d/1EjXW8h8V3adnrPLYaGQP3WhhadpCU5EB/view?usp=sharing"},
+ {t:"Tunable Metasurface based Polarization-insensitive Electro-Optic Amplitude Modulator for Nanophotonic Systems",a:"T. Bhowmik, J. Gupta, B. Chakraborty, A. K. Chowdhary, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Guwahati, India",y:2023,k:"conference",g:"Nanophotonics",u:"https://ieeexplore.ieee.org/abstract/document/10183590"},
+ {t:"Metasurface based Polarization-insensitive Reflection-mode Band-reject Filters for 6G Applications",a:"S. Das, J. Gupta, T. Bhowmik, B. Chakraborty, D. Sikdar",v:"IEEE Guwahati Subsection Conference (GCON), Guwahati, India",y:2023,k:"conference",g:"6G",u:"https://ieeexplore.ieee.org/abstract/document/10183550"},
+ {t:"Design and Analysis of a Thin Metamaterial for Magnetic Field Enhancement in 1.5T MRI",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"IEEE Photonics Conference (IPC), Vancouver, BC, Canada",y:2022,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/9975761"},
+ {t:"Magnetic Metasurface Add-ons \u2014 A Route Towards Making MRI More Efficient, Affordable and Accessible",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"IEEE Silchar Subsection Conference (SILCON), Silchar, India",y:2022,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/10028836"},
+ {t:"Analysis of SNR Enhancement in 1.5T MRI by Using Metasurfaces",a:"P. Das, J. Gupta, D. Sikdar, R. Bhattacharjee",v:"IEEE Microwaves, Antennas and Propagation Conference (MAPCON), Bangalore, India",y:2022,k:"conference",g:"MRI metasurfaces",u:"https://ieeexplore.ieee.org/abstract/document/10046946"}
+];
+
+(function(){
+  const list = document.getElementById('publist');
+  const count = document.getElementById('pubcount');
+  const search = document.getElementById('pubsearch');
+  const chips = Array.from(document.querySelectorAll('#filters .chip'));
+  let filter = 'all', q = '';
+
+  function esc(s){ return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  function bold(authors){ return esc(authors).replace(/J\. Gupta/g, '<mark>J. Gupta</mark>'); }
+
+  function match(p){
+    let ok = true;
+    if(filter === 'journal' || filter === 'conference') ok = (p.k === filter);
+    else if(filter === 'first') ok = !!p.first;
+    else if(filter !== 'all') ok = (p.g === filter);
+    if(ok && q){
+      const hay = (p.t + ' ' + p.a + ' ' + p.v + ' ' + p.y + ' ' + p.g).toLowerCase();
+      ok = hay.indexOf(q) !== -1;
+    }
+    return ok;
+  }
+
+  function render(){
+    const rows = PUBS.filter(match);
+    if(!rows.length){
+      list.innerHTML = '<p class="empty">No publications match that filter. Try clearing the search.</p>';
+    } else {
+      list.innerHTML = rows.map(function(p){
+        const title = p.u
+          ? '<a href="' + p.u + '" target="_blank" rel="noopener">' + esc(p.t) + '</a>'
+          : esc(p.t);
+        let meta = '<span class="venue">' + esc(p.v) + '</span><span>' + p.y + '</span>';
+        meta += '<span class="tag">' + esc(p.g) + '</span>';
+        if(p.q) meta += '<span class="tag ' + (p.q === 'Q1' ? 'q1' : '') + '">' + p.q + '</span>';
+        if(p.award) meta += '<span class="tag award">' + p.award + '</span>';
+        if(p.rev) meta += '<span class="tag rev">Under review</span>';
+        return '<article class="pub"><h3 class="pub-t">' + title + '</h3>'
+             + '<p class="pub-a">' + bold(p.a) + '</p>'
+             + '<div class="pub-m">' + meta + '</div></article>';
+      }).join('');
+    }
+    count.textContent = rows.length + ' of ' + PUBS.length + ' shown';
+  }
+
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      chips.forEach(function(o){ o.setAttribute('aria-pressed', String(o === c)); });
+      filter = c.dataset.f;
+      render();
+    });
+  });
+  search.addEventListener('input', function(){ q = search.value.trim().toLowerCase(); render(); });
+  render();
+})();
+
+/* ================= 3. Nav highlighting + misc ================= */
+(function(){
+  const links = Array.from(document.querySelectorAll('#navlinks a'));
+  const map = {};
+  links.forEach(function(a){
+    const el = document.querySelector(a.getAttribute('href'));
+    if(el) map[el.id] = a;
+  });
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        const a = map[e.target.id];
+        if(!a) return;
+        if(e.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('on'); });
+          a.classList.add('on');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+  }
+
+  const btn = document.getElementById('copybtn');
+  if(btn) btn.addEventListener('click', function(){
+    const email = 'jegyasu@mdc-berlin.de';
+    const done = function(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1600); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(email).then(done).catch(function(){ btn.textContent = 'Select manually'; });
+    } else { btn.textContent = 'Select manually'; }
+  });
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
