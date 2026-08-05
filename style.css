@@ -323,3 +323,11 @@ footer .fnav a:hover{color:var(--peak)}
 .feature-text p{margin:0 0 1rem;font-size:.98rem}
 .feature-text p:last-child{margin-bottom:0}
 @media(max-width:860px){ .feature-grid{grid-template-columns:1fr} }
+
+
+/* ---------- award photograph ---------- */
+.awards li.award-fig{display:block;padding:1.1rem 0}
+.award-fig figure{margin:0}
+.award-fig img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:3px}
+.award-fig figcaption{font-family:var(--mono);font-size:.68rem;line-height:1.55;
+  color:var(--muted);margin-top:.6rem}
