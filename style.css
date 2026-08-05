@@ -386,3 +386,27 @@ footer .fnav a:hover{color:var(--peak)}
 .facts .subfacts li:last-child{margin-bottom:0}
 .facts .subfacts li::before{content:"";position:absolute;left:0;top:.62em;
   width:.42rem;height:1px;background:var(--flux)}
+
+
+/* ---------- citations-per-year chart ---------- */
+.cite-chart{max-width:var(--maxw);margin:0 auto;padding:.2rem clamp(18px,5vw,34px) .3rem;
+  visibility:hidden}
+.cite-chart.ready{visibility:visible}
+.cite-chart svg{width:100%;height:auto;display:block}
+
+/* ---------- footer last-updated ---------- */
+.updated{visibility:hidden}
+.updated.ready{visibility:visible}
+.updated b{color:#9FB4C1;font-weight:500}
+
+
+/* ---------- pull quote ---------- */
+.quote{border-top:0;padding:clamp(46px,7vw,74px) 0}
+.quote figure{margin:0;text-align:center;max-width:34ch;margin-inline:auto}
+.quote blockquote{margin:0;font-size:clamp(1.35rem,3.4vw,2rem);line-height:1.32;
+  letter-spacing:-.015em;color:var(--ink);font-style:italic;position:relative}
+.quote blockquote::before{content:"";display:block;width:34px;height:2px;
+  background:var(--peak);margin:0 auto 1.5rem}
+.quote figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);margin-top:1.3rem}
+.quote figcaption span{color:var(--flux)}
