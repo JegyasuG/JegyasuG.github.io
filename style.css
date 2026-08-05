@@ -342,3 +342,8 @@ footer .fnav a:hover{color:var(--peak)}
   .venture-grid{grid-template-columns:1fr}
   .venture-logo{max-width:340px}
 }
+
+
+/* ---------- stacked feature figures ---------- */
+.feature-stack{display:flex;flex-direction:column;gap:clamp(2rem,5vw,3.2rem);margin-top:2.2rem}
+.feature-stack .feature{margin:0}
