@@ -376,3 +376,13 @@ footer .fnav a:hover{color:var(--peak)}
 .lb-close{top:1.1rem;right:1.1rem}
 .lb-prev{left:1.1rem;top:50%;transform:translateY(-50%)}
 .lb-next{right:1.1rem;top:50%;transform:translateY(-50%)}
+
+
+/* ---------- sub-points inside a fact ---------- */
+.facts .subfacts{list-style:none;margin:.55rem 0 0;padding:0 0 0 .8rem;
+  border-left:1px solid var(--rule)}
+.facts .subfacts li{position:relative;font-size:.86rem;line-height:1.45;color:var(--muted);
+  padding-left:.75rem;margin-bottom:.3rem}
+.facts .subfacts li:last-child{margin-bottom:0}
+.facts .subfacts li::before{content:"";position:absolute;left:0;top:.62em;
+  width:.42rem;height:1px;background:var(--flux)}
