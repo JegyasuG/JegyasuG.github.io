@@ -402,11 +402,13 @@ footer .fnav a:hover{color:var(--peak)}
 
 /* ---------- pull quote ---------- */
 .quote{border-top:0;padding:clamp(46px,7vw,74px) 0}
-.quote figure{margin:0;text-align:center;max-width:34ch;margin-inline:auto}
-.quote blockquote{margin:0;font-size:clamp(1.35rem,3.4vw,2rem);line-height:1.32;
+.quote figure{margin:0;text-align:center;max-width:54ch;margin-inline:auto}
+.quote blockquote{margin:0;font-size:clamp(1.12rem,2.7vw,1.72rem);line-height:1.38;
   letter-spacing:-.015em;color:var(--ink);font-style:italic;position:relative}
 .quote blockquote::before{content:"";display:block;width:34px;height:2px;
   background:var(--peak);margin:0 auto 1.5rem}
 .quote figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;
   text-transform:uppercase;color:var(--muted);margin-top:1.3rem}
 .quote figcaption span{color:var(--flux)}
+
+@media(max-width:560px){ .quote blockquote br{display:none} }
