@@ -2,7 +2,7 @@ name: Refresh Google Scholar metrics
 
 on:
   schedule:
-    - cron: '17 4 * * *'      # daily, 04:17 UTC
+    - cron: '17 4 * * *'      # daily at 04:17 UTC
   workflow_dispatch:           # lets you run it by hand from the Actions tab
 
 permissions:
@@ -19,11 +19,62 @@ jobs:
           python-version: '3.12'
 
       - name: Fetch metrics from Google Scholar
-        run: python scripts/fetch_scholar.py
+        run: |
+          python - <<'PY'
+          import datetime, json, re, sys, urllib.request
+
+          PROFILE = "https://scholar.google.com/citations?user=ivT6MMMAAAAJ&hl=en"
+          UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/125.0 Safari/537.36")
+
+          def skip(msg):
+              # exit 0 so a Scholar block does not show as a failed workflow
+              print("::warning::Scholar refresh skipped - " + msg)
+              sys.exit(0)
+
+          try:
+              with open("metrics.json") as f:
+                  old = json.load(f)
+          except Exception as e:
+              print("::error::Cannot read metrics.json - " + str(e))
+              sys.exit(1)
+
+          try:
+              req = urllib.request.Request(
+                  PROFILE, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
+              html = urllib.request.urlopen(req, timeout=45).read().decode("utf-8", "replace")
+          except Exception as e:
+              skip("could not reach Scholar (%s)" % e)
+
+          if "gsc_rsb_std" not in html:
+              skip("Scholar returned a page with no metrics table (likely a captcha)")
+
+          nums = [int(n) for n in re.findall(r'gsc_rsb_std">(\d+)<', html)]
+          if len(nums) < 6:
+              skip("found %d numbers in the table, expected 6" % len(nums))
+
+          citations, h_index, i10 = nums[0], nums[2], nums[4]
+
+          if citations < 1 or h_index < 1:
+              skip("parsed zero values")
+          if citations < old["citations"] * 0.7:
+              skip("parsed %d citations, a suspicious drop from %d" % (citations, old["citations"]))
+
+          if (citations, h_index, i10) == (old["citations"], old["h_index"], old["i10_index"]):
+              print("No change: %d citations, h=%d, i10=%d" % (citations, h_index, i10))
+              sys.exit(0)
+
+          old.update({"citations": citations, "h_index": h_index, "i10_index": i10,
+                      "updated": datetime.date.today().isoformat()})
+          with open("metrics.json", "w") as f:
+              json.dump(old, f, indent=2)
+              f.write("\n")
+          print("Updated: %d citations, h=%d, i10=%d" % (citations, h_index, i10))
+          PY
 
       - name: Commit if changed
         run: |
-          if [[ -n "$(git status --porcelain metrics.json)" ]]; then
+          if [ -n "$(git status --porcelain metrics.json)" ]; then
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add metrics.json
