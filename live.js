@@ -1,25 +1,27 @@
 /* ===== live data =====
-   1. Site last-updated date from the GitHub API.
+   1. Today's date in the footer, repainting itself each midnight.
    2. Berlin local time on the contact page.
    3. Visitor counter.
    Every block degrades quietly: if a service is unreachable the page keeps
    whatever is already written into the HTML, or hides that element.        */
 
-/* ---- 1. site last updated, from the GitHub API ---- */
+/* ---- 1. live date, refreshed daily ---- */
 (function(){
   var out = document.getElementById('updated');
   if(!out) return;
   var wrap = out.closest('.updated');
-  fetch('https://api.github.com/repos/JegyasuG/JegyasuG.github.io/commits?per_page=1')
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(j){
-      var d = j && j[0] && j[0].commit && (j[0].commit.committer || j[0].commit.author);
-      if(!d || !d.date) throw 0;
-      out.textContent = new Date(d.date)
-        .toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
-      if(wrap) wrap.classList.add('ready');
-    })
-    .catch(function(){ if(wrap) wrap.remove(); });
+
+  function paint(){
+    out.textContent = new Date().toLocaleDateString('en-GB',
+      {day:'numeric', month:'long', year:'numeric'});
+    if(wrap) wrap.classList.add('ready');
+  }
+  paint();
+
+  // repaint shortly after the next midnight, then once a day
+  var now  = new Date();
+  var next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 5);
+  setTimeout(function(){ paint(); setInterval(paint, 86400000); }, next - now);
 })();
 
 /* ---- 2. Berlin local time ---- */
