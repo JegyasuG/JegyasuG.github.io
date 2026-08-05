@@ -1,0 +1,29 @@
+{
+  "note": "Add a photo by copying a block. Order here is the order shown, left to right, top to bottom. 'focus' shifts the crop in the grid tile (e.g. 'center top', 'center 30%'); the lightbox always shows the full uncropped image.",
+  "items": [
+    {
+      "src": "mdc-joining.jpg",
+      "caption": "Joining day at MDC",
+      "alt": "Standing outside the Max Delbrück Communications Center in Berlin-Buch on the first day.",
+      "focus": "center 65%"
+    },
+    {
+      "src": "phd-defence.jpg",
+      "caption": "Successful Ph.D. defence, with supervisor Dr. Debabrata Sikdar",
+      "alt": "Beside the title slide of the Ph.D. thesis viva voce seminar at IIT Guwahati with the supervisor.",
+      "focus": "center center"
+    },
+    {
+      "src": "mdc-molecule.jpg",
+      "caption": "Molecular art at MDC",
+      "alt": "A large ball-and-stick molecular sculpture on the MDC campus at dusk.",
+      "focus": "center center"
+    },
+    {
+      "src": "alexanderplatz.jpg",
+      "caption": "A bright sunny day at Alexanderplatz",
+      "alt": "The Berlin television tower rising above Alexanderplatz under a blue sky.",
+      "focus": "center 40%"
+    }
+  ]
+}
