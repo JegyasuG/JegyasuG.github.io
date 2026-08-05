@@ -1,0 +1,47 @@
+{
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body and link are all optional.",
+  "items": [
+    {
+      "date": "2026-07-12",
+      "tag": "Award",
+      "title": "Best Ph.D. Thesis Award, IIT Guwahati",
+      "body": "The thesis \"The Role of Metamaterials in Improving Magnetic Resonance Imaging\" received the Institute's Best Ph.D. Thesis Award at the 28th Convocation.",
+      "link": ""
+    },
+    {
+      "date": "2026-07-01",
+      "tag": "Appointment",
+      "title": "Joined the Berlin Ultrahigh Field Facility",
+      "body": "Started as RF Scientist at B.U.F.F., Max Delbrück Center for Molecular Medicine, in Prof. Thoralf Niendorf's group, working on RF coils and applicators for ultrahigh-field and thermal magnetic resonance.",
+      "link": ""
+    },
+    {
+      "date": "2026-03-19",
+      "tag": "Patent",
+      "title": "Indian Patent No. 583980 granted",
+      "body": "\"A Metasurface-inspired Flexible Structure for Boosting the Signal-to-Noise Ratio (SNR) in 1.5T MRI Scans\" — the second granted patent underpinning Meta Samadhan's flexi-wrap technology.",
+      "link": "https://drive.google.com/file/d/1G922fbAOn3WfeMteZ7anOG5FVe8soyUE/view?usp=sharing"
+    },
+    {
+      "date": "2026-02-02",
+      "tag": "Patent",
+      "title": "Indian Patent No. 579702 granted",
+      "body": "\"A Magnetic Metamaterial Add-on for Improving the Signal-to-Noise Ratio of Magnetic Resonance Imaging\".",
+      "link": "https://drive.google.com/file/d/14vC5qJFwRqEGj8LK177ROBld3BAiRmuL/view?usp=sharing"
+    },
+    {
+      "date": "2026-01-15",
+      "tag": "Paper",
+      "title": "New paper in Applied Physics A",
+      "body": "\"Smart and Flexible Metasurface-Inspired Wraps as 'Add-ons' for Enhanced Magnetic Resonance Imaging\" — switchable wraps that boost the received field without modifying the scanner.",
+      "link": "https://link.springer.com/article/10.1007/s00339-026-09305-8"
+    },
+    {
+      "date": "2025-12-05",
+      "tag": "Award",
+      "title": "Best Paper Award at IEEE GCON 2025",
+      "body": "Awarded for work on switchable metasurface wraps of interconnected rectangular windings, presented at the IEEE Guwahati Subsection Conference in Itanagar.",
+      "link": "https://ieeexplore.ieee.org/xpl/conhome/10183386/proceeding"
+    }
+  ]
+}

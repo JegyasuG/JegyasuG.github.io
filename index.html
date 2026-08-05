@@ -16,6 +16,7 @@
     <a class="brand" href="index.html">DR<span>&middot;</span>JEGYASU</a>
     <div class="nav-links">
       <a href="index.html" class="on">Home</a>
+      <a href="news.html">News</a>
       <a href="research.html">Research</a>
       <a href="publications.html">Publications</a>
       <a href="patents.html">Patents</a>
@@ -65,9 +66,9 @@
     </div>
     <aside>
       <figure class="portrait">
-        <!-- REPLACE: put your photo at images/portrait.jpg (portrait crop, ~800x1000px) -->
-        <img src="images/portrait.jpg" alt="Dr. Jegyasu" onerror="this.closest('.portrait').classList.add('noimg')">
-        <span class="ph-note">Portrait &rarr; images/portrait.jpg</span>
+        <!-- Photo: portrait.jpg, sitting next to index.html at the repo root -->
+        <img src="portrait.jpg" alt="Dr. Jegyasu" onerror="this.closest('.portrait').classList.add('noimg')">
+        <span class="ph-note">Portrait &rarr; portrait.jpg</span>
       </figure>
       <div class="facts">
       <dl>
@@ -84,23 +85,32 @@
 </div></section>
 
 <section><div class="wrap">
+  <p class="eyebrow">News</p>
+  <h2 class="sec-title">Latest updates</h2>
+  <div id="news-home"><p class="empty">Loading&hellip;</p></div>
+  <p class="more"><a href="news.html">All updates &rarr;</a></p>
+</div></section>
+
+<section><div class="wrap">
   <p class="eyebrow">Explore</p>
   <h2 class="sec-title">The rest of the site</h2>
   <div class="index-grid">
-    <a class="index-card" href="research.html"><span class="k">01</span><h3>Research</h3><p>Metasurface add-ons for clinical MRI, RF coils across field strengths, thermal MR, and nanophotonics.</p><span class="go">Open &rarr;</span></a>
-    <a class="index-card" href="publications.html"><span class="k">02</span><h3>Publications</h3><p>14 journal articles and 21 conference papers, filterable by type, topic and authorship.</p><span class="go">Open &rarr;</span></a>
-    <a class="index-card" href="patents.html"><span class="k">03</span><h3>Patents &amp; startup</h3><p>Two granted Indian patents, a licensed technology, and Meta Samadhan Pvt. Ltd.</p><span class="go">Open &rarr;</span></a>
-    <a class="index-card" href="teaching.html"><span class="k">04</span><h3>Teaching</h3><p>NPTEL, Gauhati University, IIT Guwahati and NIT Delhi &mdash; plus building the MRI RF lab.</p><span class="go">Open &rarr;</span></a>
-    <a class="index-card" href="awards.html"><span class="k">05</span><h3>Awards</h3><p>Best Ph.D. Thesis, two IEEE Best Paper awards, the PMRF, and funded projects.</p><span class="go">Open &rarr;</span></a>
-    <a class="index-card" href="contact.html"><span class="k">06</span><h3>Contact</h3><p>Email, office address, academic profiles and references.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="news.html"><span class="k">01</span><h3>News</h3><p>Recent papers, patents, awards and talks.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="research.html"><span class="k">02</span><h3>Research</h3><p>Metasurface add-ons for clinical MRI, RF coils across field strengths, thermal MR, and nanophotonics.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="publications.html"><span class="k">03</span><h3>Publications</h3><p>14 journal articles and 21 conference papers, filterable by type, topic and authorship.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="patents.html"><span class="k">04</span><h3>Patents &amp; startup</h3><p>Two granted Indian patents, a licensed technology, and Meta Samadhan Pvt. Ltd.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="teaching.html"><span class="k">05</span><h3>Teaching</h3><p>NPTEL, Gauhati University, IIT Guwahati and NIT Delhi &mdash; plus building the MRI RF lab.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="awards.html"><span class="k">06</span><h3>Awards</h3><p>Best Ph.D. Thesis, two IEEE Best Paper awards, the PMRF, and funded projects.</p><span class="go">Open &rarr;</span></a>
+    <a class="index-card" href="contact.html"><span class="k">07</span><h3>Contact</h3><p>Email, office address, academic profiles and references.</p><span class="go">Open &rarr;</span></a>
   </div>
 </div></section>
 <footer><div class="wrap">
   <span>&copy; <span id="yr"></span> Dr. Jegyasu</span>
   <span class="visits">Visitors <b id="visits">&mdash;</b></span>
-  <span class="fnav"><a href="research.html">Research</a> <a href="publications.html">Publications</a> <a href="patents.html">Patents</a> <a href="teaching.html">Teaching</a> <a href="awards.html">Awards</a> <a href="contact.html">Contact</a></span>
+  <span class="fnav"><a href="news.html">News</a> <a href="research.html">Research</a> <a href="publications.html">Publications</a> <a href="patents.html">Patents</a> <a href="teaching.html">Teaching</a> <a href="awards.html">Awards</a> <a href="contact.html">Contact</a></span>
 </div></footer>
 <script src="hero.js"></script>
+<script src="news.js"></script>
 <script src="site.js"></script>
 <script src="live.js"></script>
 </body>

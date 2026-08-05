@@ -45,27 +45,60 @@
     .catch(function(){ /* markup already holds the last published values */ });
 })();
 
-/* ---- Visitor counter ---- */
+/* ---- Visitor counter ----
+   GitHub Pages is static, so the count has to come from an outside service.
+   Two free, no-signup backends are tried in order; if both are unreachable the
+   counter removes itself rather than showing a broken value. To reset the
+   count, change KEY to a new unique string.                              */
 (function(){
   var out = document.getElementById('visits');
   if(!out) return;
   var wrap = out.closest('.visits');
   var KEY  = 'jegyasu-github-io';
-  var BASE = 'https://countapi.mileshilliard.com/api/v1/';
 
-  // count each browser session once, not every page navigation
+  // count one visit per browser session, not per page click
   var seen = false;
   try { seen = sessionStorage.getItem('v_counted') === '1'; } catch(e){}
-  var url = BASE + (seen ? 'get/' : 'hit/') + KEY;
 
-  fetch(url)
-    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){
-      var n = parseInt(d.value, 10);
-      if(!isFinite(n)) throw 0;
-      out.textContent = n.toLocaleString('en-GB');
-      if(wrap) wrap.classList.add('ready');
-      if(!seen){ try { sessionStorage.setItem('v_counted','1'); } catch(e){} }
-    })
-    .catch(function(){ if(wrap) wrap.remove(); });
+  var backends = [
+    { hit: 'https://countapi.mileshilliard.com/api/v1/hit/' + KEY,
+      get: 'https://countapi.mileshilliard.com/api/v1/get/' + KEY },
+    { hit: 'https://api.counterapi.dev/v1/' + KEY + '/visits/up',
+      get: 'https://api.counterapi.dev/v1/' + KEY + '/visits/' }
+  ];
+
+  function pickNumber(d){                    // backends disagree on field names
+    if(d == null) return NaN;
+    var keys = ['value','count','Count','val','views'];
+    for(var i=0;i<keys.length;i++){
+      var v = d[keys[i]];
+      if(typeof v === 'number') return v;
+      if(typeof v === 'string' && v.trim() !== '' && isFinite(+v)) return +v;
+    }
+    return NaN;
+  }
+
+  function show(n){
+    out.textContent = n.toLocaleString('en-GB');
+    if(wrap) wrap.classList.add('ready');
+    if(!seen){ try { sessionStorage.setItem('v_counted','1'); } catch(e){} }
+  }
+
+  function tryBackend(i){
+    if(i >= backends.length){ if(wrap) wrap.remove(); return; }
+    var url = seen ? backends[i].get : backends[i].hit;
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 6000);
+
+    fetch(url, ctl ? {signal: ctl.signal} : undefined)
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){
+        clearTimeout(timer);
+        var n = pickNumber(d);
+        if(!isFinite(n)) throw 0;
+        show(n);
+      })
+      .catch(function(){ clearTimeout(timer); tryBackend(i+1); });
+  }
+  tryBackend(0);
 })();
