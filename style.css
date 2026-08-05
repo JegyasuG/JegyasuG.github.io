@@ -308,3 +308,18 @@ footer .fnav a:hover{color:var(--peak)}
 
 /* ---------- live citation badge ---------- */
 .tag.cited{border-color:var(--peak);color:#8A6400;background:#FFF6DF}
+
+
+/* ---------- featured figure ---------- */
+.feature{margin:2rem 0 0}
+.feature img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:3px;
+  background:var(--bore)}
+.feature figcaption{font-family:var(--mono);font-size:.7rem;line-height:1.6;color:var(--muted);
+  margin-top:.65rem;max-width:78ch}
+.feature figcaption b{color:var(--ink);font-weight:600}
+.feature-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1.6rem,4vw,2.8rem);
+  align-items:start}
+.feature-grid .feature{margin:0}
+.feature-text p{margin:0 0 1rem;font-size:.98rem}
+.feature-text p:last-child{margin-bottom:0}
+@media(max-width:860px){ .feature-grid{grid-template-columns:1fr} }
