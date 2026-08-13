@@ -76,8 +76,12 @@
     </div>
     <aside>
       <figure class="portrait">
-        <!-- Photo: portrait.jpg, sitting next to index.html at the repo root -->
-        <img src="portrait.jpg" alt="Dr. Jegyasu" onerror="this.closest('.portrait').classList.add('noimg')">
+        <!-- Photo: portrait.jpg, sitting next to index.html at the repo root.
+             Bump ?v= when you replace the file, so browsers and the GitHub Pages
+             CDN fetch the new image instead of the cached one. -->
+        <img src="portrait.jpg?v=2026-08" alt="Portrait of Dr. Jegyasu, RF Scientist at the Berlin Ultrahigh Field Facility"
+             width="1000" height="1000" decoding="async"
+             onerror="this.closest('.portrait').classList.add('noimg')">
         <span class="ph-note">Portrait &rarr; portrait.jpg</span>
       </figure>
       <div class="facts">
