@@ -9,9 +9,15 @@
     },
     {
       "src": "uhf-symposium-2026-collage.jpg",
-      "caption": "16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance at MDC Berlin: the opening slide, a talk in session, and the B.U.F.F. team",
-      "alt": "Three views from the symposium at the Max Delbrück Center: the opening slide listing the speakers, a speaker presenting BOLD imaging at 10.5T and 7T, and a group photo with fellow B.U.F.F. members in the foyer.",
+      "caption": "16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance at MDC Berlin: the opening slide, Prof. Kâmil Uğurbil's talk, and the B.U.F.F. team",
+      "alt": "Three views from the symposium at the Max Delbrück Center: the opening slide listing the speakers, Prof. Kâmil Uğurbil presenting BOLD imaging at 10.5T and 7T, and a group photo with fellow B.U.F.F. members in the foyer.",
       "focus": "center bottom"
+    },
+    {
+      "src": "uhf-symposium-2026-ugurbil-talk.jpg",
+      "caption": "Talk by Prof. Kâmil Uğurbil on BOLD fMRI at 10.5T vs. 7T, 16th Ultrahigh Field MR Symposium, MDC Berlin, September 2026",
+      "alt": "Prof. Kâmil Uğurbil at the lectern in the Max Delbrück Center auditorium, presenting a slide on the BOLD effect for high-resolution imaging, with the 10.5T to 7T functional contrast-to-noise ratio of 2.1.",
+      "focus": "center center"
     },
     {
       "src": "mdc-joining.jpg",
