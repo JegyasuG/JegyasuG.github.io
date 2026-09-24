@@ -2,6 +2,12 @@
   "note": "Add a photo by copying a block. Order here is the order shown, left to right, top to bottom. 'focus' shifts the crop in the grid tile (e.g. 'center top', 'center 30%'); the lightbox always shows the full uncropped image.",
   "items": [
     {
+      "src": "tempelhof-kite-festival.jpg",
+      "caption": "Kite festival at Tempelhof, Berlin",
+      "alt": "Dozens of colourful kites, including a giant orange cat and fish-shaped kites, flying under a blue sky with white clouds over the crowded Tempelhofer Feld in Berlin.",
+      "focus": "center center"
+    },
+    {
       "src": "uhf-symposium-2026-group.jpg",
       "caption": "With B.U.F.F. group members at the 16th Ultrahigh Field MR Symposium, MDC Berlin, September 2026",
       "alt": "Smiling with a thumbs-up alongside three colleagues from the Berlin Ultrahigh Field Facility in the foyer of the Max Delbrück Center during the symposium.",
