@@ -41,18 +41,19 @@
     </div>
   </div>
 </header><div class="metrics">
-  <!-- Citation figures are edited by hand. Update the numbers below and the date
-       in the line under the strip when you refresh them from Google Scholar. -->
+  <!-- h-index, citations, i10-index and the date are filled in from metrics.json
+       (refreshed daily by .github/workflows/scholar.yml). The numbers written here
+       are only a fallback if that file cannot be loaded. -->
   <div class="metrics-in">
     <div class="metric"><b>14</b><span>Journal articles</span></div>
     <div class="metric"><b>21</b><span>Conference papers</span></div>
     <div class="metric"><b>2</b><span>Granted patents</span></div>
-    <div class="metric"><b>8</b><span>h-index</span></div>
-    <div class="metric"><b>219</b><span>Citations</span></div>
-    <div class="metric"><b>6</b><span>i10-index</span></div>
+    <div class="metric"><b id="m-h">8</b><span>h-index</span></div>
+    <div class="metric"><b id="m-cit">219</b><span>Citations</span></div>
+    <div class="metric"><b id="m-i10">6</b><span>i10-index</span></div>
   </div>
   <p class="metrics-note">
-    <a href="https://scholar.google.com/citations?user=ivT6MMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar, September 2026 &nearr;</a>
+    <a href="https://scholar.google.com/citations?user=ivT6MMMAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar, <span id="m-date">September 2026</span> &nearr;</a>
   </p>
 </div>
 
