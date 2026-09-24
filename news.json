@@ -1,5 +1,5 @@
 {
-  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); image_wide: true gives a landscape picture a wider column; image_alt describes it.",
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); home_image / home_thumb / home_image_alt / home_image_wide show a picture on the home page only. image_wide: true gives a landscape picture a wider column; image_alt describes it.",
   "items": [
     {
       "date": "2026-10-01",
@@ -28,7 +28,11 @@
       "tag": "Award",
       "title": "Best Ph.D. Thesis Award, IIT Guwahati",
       "body": "The thesis \"The Role of Metamaterials in Improving Magnetic Resonance Imaging\" received the Institute's Best Ph.D. Thesis Award at the 28th Convocation.",
-      "link": ""
+      "link": "",
+      "home_image": "convocation.jpg",
+      "home_thumb": "convocation-thumb.jpg",
+      "home_image_wide": true,
+      "home_image_alt": "Receiving the Best Ph.D. Thesis Award on stage at the 28th Convocation of IIT Guwahati, July 2026."
     },
     {
       "date": "2026-04-01",

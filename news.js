@@ -25,14 +25,17 @@
          + (n.tag ? '<span class="tag">' + esc(n.tag) + '</span>' : '') + '</div>'
          + '<h3>' + head + '</h3>'
          + (n.body ? '<p>' + esc(n.body) + '</p>' : '');
-    if(!n.image) return '<article class="news">' + text + '</article>';
-    var alt = n.image_alt || n.title;
-    var banner = onHome && n.home_thumb;  // e.g. a banner in place of the thumbnail
-    var wide = banner || n.image_wide;    // landscape pictures get a wider column
+    var homeOnly = onHome && n.home_image;  // a picture shown on the home page only
+    var full = homeOnly ? n.home_image : n.image;
+    if(!full) return '<article class="news">' + text + '</article>';
+    var alt = (homeOnly ? n.home_image_alt : n.image_alt) || n.title;
+    var banner = onHome && n.home_thumb && !n.home_image;  // e.g. a banner in place of the thumbnail
+    var thumb = homeOnly ? (n.home_thumb || full) : banner ? n.home_thumb : (n.thumb || full);
+    var wide = banner || (homeOnly ? n.home_image_wide : n.image_wide);  // landscape: wider column
     return '<article class="news has-img' + (wide ? ' wide' : '') + '"><div>' + text + '</div>'
-         + '<button type="button" class="news-thumb" data-src="' + esc(n.image) + '"'
+         + '<button type="button" class="news-thumb" data-src="' + esc(full) + '"'
          + ' data-alt="' + esc(alt) + '" aria-label="View larger: ' + esc(alt) + '">'
-         + '<img src="' + esc(banner ? n.home_thumb : (n.thumb || n.image)) + '" alt="" loading="lazy">'
+         + '<img src="' + esc(thumb) + '" alt="" loading="lazy">'
          + '<span>' + (banner ? 'View poster' : 'Click to enlarge') + '</span></button>'
          + '</article>';
   }
