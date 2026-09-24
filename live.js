@@ -2,6 +2,7 @@
    1. Today's date in the footer, repainting itself each midnight.
    2. Berlin local time on the contact page.
    3. Visitor counter.
+   4. Google Scholar metrics on the home page, from metrics.json.
    Every block degrades quietly: if a service is unreachable the page keeps
    whatever is already written into the HTML, or hides that element.        */
 
@@ -88,4 +89,26 @@
 (function(){
   var y = document.getElementById('yr');
   if(y) y.textContent = new Date().getFullYear();
+})();
+
+/* ---- 4. Scholar metrics from metrics.json ---- */
+(function(){
+  var cit = document.getElementById('m-cit');
+  if(!cit) return;
+  fetch('metrics.json', {cache:'no-cache'})
+    .then(function(r){ if(!r.ok) throw r.status; return r.json(); })
+    .then(function(m){
+      function set(id, v){
+        var el = document.getElementById(id);
+        if(el && typeof v === 'number' && v > 0) el.textContent = v;
+      }
+      set('m-cit', m.citations);
+      set('m-h',   m.h_index);
+      set('m-i10', m.i10_index);
+      var d = document.getElementById('m-date');
+      var when = m.updated && new Date(m.updated + 'T00:00:00');
+      if(d && when && !isNaN(when))
+        d.textContent = when.toLocaleDateString('en-GB', {month:'long', year:'numeric'});
+    })
+    .catch(function(){ /* keep the numbers written into the HTML */ });
 })();
