@@ -17,7 +17,7 @@
     if(isNaN(dt)) return esc(d);
     return dt.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
   }
-  function item(n){
+  function item(n, onHome){
     var head = n.link
       ? '<a href="' + esc(n.link) + '" target="_blank" rel="noopener">' + esc(n.title) + '</a>'
       : esc(n.title);
@@ -27,11 +27,12 @@
          + (n.body ? '<p>' + esc(n.body) + '</p>' : '');
     if(!n.image) return '<article class="news">' + text + '</article>';
     var alt = n.image_alt || n.title;
-    return '<article class="news has-img"><div>' + text + '</div>'
+    var wide = onHome && n.home_thumb;   // e.g. a banner in place of the thumbnail
+    return '<article class="news has-img' + (wide ? ' wide' : '') + '"><div>' + text + '</div>'
          + '<button type="button" class="news-thumb" data-src="' + esc(n.image) + '"'
          + ' data-alt="' + esc(alt) + '" aria-label="View larger: ' + esc(alt) + '">'
-         + '<img src="' + esc(n.thumb || n.image) + '" alt="" loading="lazy">'
-         + '<span>Click to enlarge</span></button>'
+         + '<img src="' + esc(wide ? n.home_thumb : (n.thumb || n.image)) + '" alt="" loading="lazy">'
+         + '<span>' + (wide ? 'View poster' : 'Click to enlarge') + '</span></button>'
          + '</article>';
   }
 
@@ -82,8 +83,8 @@
         return String(b.date).localeCompare(String(a.date));
       });
       if(!items.length) throw 0;
-      if(home) home.innerHTML = items.slice(0,3).map(item).join('');
-      if(all)  all.innerHTML  = items.map(item).join('');
+      if(home) home.innerHTML = items.slice(0,3).map(function(n){ return item(n, true); }).join('');
+      if(all)  all.innerHTML  = items.map(function(n){ return item(n, false); }).join('');
     })
     .catch(function(){
       var msg = '<p class="empty">News could not be loaded just now.</p>';

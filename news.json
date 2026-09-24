@@ -1,5 +1,5 @@
 {
-  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); image_alt describes it.",
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); image_alt describes it.",
   "items": [
     {
       "date": "2026-10-01",
@@ -9,7 +9,8 @@
       "link": "https://drive.google.com/file/d/1p2_akEBKZ47uEH4N4j2DFR8eiAQab4wQ/view?usp=sharing",
       "image": "esmrmb-2026-poster.jpg",
       "thumb": "esmrmb-2026-poster-thumb.jpg",
-      "image_alt": "ESMRMB 2026 poster P453: Metamaterial-integrated bow-tie antenna arrays for magnetic field shaping at 7T."
+      "image_alt": "ESMRMB 2026 poster P453: Metamaterial-integrated bow-tie antenna arrays for magnetic field shaping at 7T.",
+      "home_thumb": "esmrmb-2026-banner.jpg"
     },
     {
       "date": "2026-09-18",
