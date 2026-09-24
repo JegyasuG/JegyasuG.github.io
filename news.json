@@ -1,5 +1,5 @@
 {
-  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); image_alt describes it.",
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); image_wide: true gives a landscape picture a wider column; image_alt describes it.",
   "items": [
     {
       "date": "2026-10-01",
@@ -17,7 +17,11 @@
       "tag": "Talk",
       "title": "Poster and Power Pitch at the 16th Ultrahigh Field MR Symposium, Berlin",
       "body": "Presented a poster and a 3-minute Poster Power Pitch at the 16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance, Max Delbrück Center, Berlin — \"Metamaterial-integrated bow-tie antenna array for magnetic field shaping at 7T: a route towards RF phase-encoded B₁ and SAR steering\". Also served as session co-chair.",
-      "link": ""
+      "link": "",
+      "image": "uhf-symposium-2026-opening.jpg",
+      "thumb": "uhf-symposium-2026-opening-thumb.jpg",
+      "image_wide": true,
+      "image_alt": "Opening slide of the 16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance at the Max Delbrück Center, Berlin, listing the invited speakers."
     },
     {
       "date": "2026-07-12",

@@ -27,12 +27,13 @@
          + (n.body ? '<p>' + esc(n.body) + '</p>' : '');
     if(!n.image) return '<article class="news">' + text + '</article>';
     var alt = n.image_alt || n.title;
-    var wide = onHome && n.home_thumb;   // e.g. a banner in place of the thumbnail
+    var banner = onHome && n.home_thumb;  // e.g. a banner in place of the thumbnail
+    var wide = banner || n.image_wide;    // landscape pictures get a wider column
     return '<article class="news has-img' + (wide ? ' wide' : '') + '"><div>' + text + '</div>'
          + '<button type="button" class="news-thumb" data-src="' + esc(n.image) + '"'
          + ' data-alt="' + esc(alt) + '" aria-label="View larger: ' + esc(alt) + '">'
-         + '<img src="' + esc(wide ? n.home_thumb : (n.thumb || n.image)) + '" alt="" loading="lazy">'
-         + '<span>' + (wide ? 'View poster' : 'Click to enlarge') + '</span></button>'
+         + '<img src="' + esc(banner ? n.home_thumb : (n.thumb || n.image)) + '" alt="" loading="lazy">'
+         + '<span>' + (banner ? 'View poster' : 'Click to enlarge') + '</span></button>'
          + '</article>';
   }
 
