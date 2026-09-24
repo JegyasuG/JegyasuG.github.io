@@ -1,5 +1,5 @@
 {
-  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); home_image / home_thumb / home_image_alt / home_image_wide show a picture on the home page only. image_wide: true gives a landscape picture a wider column; image_alt describes it.",
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); home_thumb, if set, replaces thumb on the home page only (e.g. a wide banner); home_image / home_thumb / home_image_alt / home_image_wide show a picture on the home page only. image_wide: true gives a landscape picture a wider column; image_alt describes it. hide_home: true keeps an item off the home page (news page only).",
   "items": [
     {
       "date": "2026-10-01",
@@ -22,6 +22,14 @@
       "thumb": "uhf-symposium-2026-opening-thumb.jpg",
       "image_wide": true,
       "image_alt": "Opening slide of the 16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance at the Max Delbrück Center, Berlin, listing the invited speakers."
+    },
+    {
+      "date": "2026-09-09",
+      "tag": "Fellowship",
+      "title": "Marie Skłodowska-Curie Postdoctoral Fellowship application submitted",
+      "body": "Submitted an MSCA Postdoctoral Fellowship application for METAFOCUS: Advancing ThermalMR using Metamaterials.",
+      "link": "",
+      "hide_home": true
     },
     {
       "date": "2026-07-12",

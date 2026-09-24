@@ -2,7 +2,8 @@
    Reads news.json. On the home page it renders the newest few into #news-home;
    on news.html it renders everything into #news-all. To post an update, edit
    news.json only -- nothing here needs changing. An item with an "image"
-   shows a small thumbnail that opens the full picture when clicked.      */
+   shows a small thumbnail that opens the full picture when clicked. An item
+   with "hide_home": true appears on news.html only.                      */
 (function(){
   var home = document.getElementById('news-home');
   var all  = document.getElementById('news-all');
@@ -87,7 +88,7 @@
         return String(b.date).localeCompare(String(a.date));
       });
       if(!items.length) throw 0;
-      if(home) home.innerHTML = items.slice(0,3).map(function(n){ return item(n, true); }).join('');
+      if(home) home.innerHTML = items.filter(function(n){ return !n.hide_home; }).slice(0,3).map(function(n){ return item(n, true); }).join('');
       if(all)  all.innerHTML  = items.map(function(n){ return item(n, false); }).join('');
     })
     .catch(function(){
