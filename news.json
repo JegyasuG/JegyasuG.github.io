@@ -2,6 +2,20 @@
   "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body and link are all optional.",
   "items": [
     {
+      "date": "2026-10-01",
+      "tag": "Conference",
+      "title": "Poster accepted at ESMRMB 2026, Girona",
+      "body": "Abstract accepted for poster presentation at the 42nd Annual Scientific Meeting of the ESMRMB, Girona, Spain (1–3 October; poster P453 on 1 October). The work reports a 42.4% improvement in SAR efficiency for a metamaterial-integrated bow-tie antenna array at 7T over a geometrically identical array without the metamaterial layer.",
+      "link": "https://drive.google.com/file/d/1p2_akEBKZ47uEH4N4j2DFR8eiAQab4wQ/view?usp=sharing"
+    },
+    {
+      "date": "2026-09-18",
+      "tag": "Talk",
+      "title": "Poster and Power Pitch at the 16th Ultrahigh Field MR Symposium, Berlin",
+      "body": "Presented a poster and a 3-minute Poster Power Pitch at the 16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance, Max Delbrück Center, Berlin — \"Metamaterial-integrated bow-tie antenna array for magnetic field shaping at 7T: a route towards RF phase-encoded B₁ and SAR steering\". Also served as session co-chair.",
+      "link": ""
+    },
+    {
       "date": "2026-07-12",
       "tag": "Award",
       "title": "Best Ph.D. Thesis Award, IIT Guwahati",
