@@ -2,6 +2,18 @@
   "note": "Add a photo by copying a block. Order here is the order shown, left to right, top to bottom. 'focus' shifts the crop in the grid tile (e.g. 'center top', 'center 30%'); the lightbox always shows the full uncropped image.",
   "items": [
     {
+      "src": "uhf-symposium-2026-group.jpg",
+      "caption": "With B.U.F.F. group members at the 16th Ultrahigh Field MR Symposium, MDC Berlin, September 2026",
+      "alt": "Smiling with a thumbs-up alongside three colleagues from the Berlin Ultrahigh Field Facility in the foyer of the Max Delbrück Center during the symposium.",
+      "focus": "center 52%"
+    },
+    {
+      "src": "uhf-symposium-2026-collage.jpg",
+      "caption": "16th Annual Scientific Symposium on Ultrahigh Field Magnetic Resonance at MDC Berlin: the opening slide, a talk in session, and the B.U.F.F. team",
+      "alt": "Three views from the symposium at the Max Delbrück Center: the opening slide listing the speakers, a speaker presenting BOLD imaging at 10.5T and 7T, and a group photo with fellow B.U.F.F. members in the foyer.",
+      "focus": "center bottom"
+    },
+    {
       "src": "mdc-joining.jpg",
       "caption": "Joining day at MDC",
       "alt": "Standing outside the Max Delbrück Communications Center in Berlin-Buch on the first day.",
