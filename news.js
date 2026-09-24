@@ -1,15 +1,16 @@
 /* ===== news feed =====
    Reads news.json. On the home page it renders the newest few into #news-home;
    on news.html it renders everything into #news-all. To post an update, edit
-   news.json only -- nothing here needs changing.                          */
+   news.json only -- nothing here needs changing. An item with an "image"
+   shows a small thumbnail that opens the full picture when clicked.      */
 (function(){
   var home = document.getElementById('news-home');
   var all  = document.getElementById('news-all');
   if(!home && !all) return;
 
   function esc(s){
-    return String(s == null ? '' : s).replace(/[&<>]/g, function(c){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; });
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; });
   }
   function fmt(d){
     var dt = new Date(d + 'T00:00:00');
@@ -20,13 +21,59 @@
     var head = n.link
       ? '<a href="' + esc(n.link) + '" target="_blank" rel="noopener">' + esc(n.title) + '</a>'
       : esc(n.title);
-    return '<article class="news">'
-         + '<div class="news-meta"><time>' + fmt(n.date) + '</time>'
+    var text = '<div class="news-meta"><time>' + fmt(n.date) + '</time>'
          + (n.tag ? '<span class="tag">' + esc(n.tag) + '</span>' : '') + '</div>'
          + '<h3>' + head + '</h3>'
-         + (n.body ? '<p>' + esc(n.body) + '</p>' : '')
+         + (n.body ? '<p>' + esc(n.body) + '</p>' : '');
+    if(!n.image) return '<article class="news">' + text + '</article>';
+    var alt = n.image_alt || n.title;
+    return '<article class="news has-img"><div>' + text + '</div>'
+         + '<button type="button" class="news-thumb" data-src="' + esc(n.image) + '"'
+         + ' data-alt="' + esc(alt) + '" aria-label="View larger: ' + esc(alt) + '">'
+         + '<img src="' + esc(n.thumb || n.image) + '" alt="" loading="lazy">'
+         + '<span>Click to enlarge</span></button>'
          + '</article>';
   }
+
+  /* ---- zoom view for news images ---- */
+  var box = null, opener = null;
+  function zoom(btn){
+    if(!box){
+      box = document.createElement('div');
+      box.className = 'lightbox tall';
+      box.setAttribute('role','dialog');
+      box.setAttribute('aria-modal','true');
+      box.innerHTML = '<button class="lb-close" aria-label="Close">&times;</button>'
+                    + '<figure><img alt=""><figcaption></figcaption></figure>';
+      document.body.appendChild(box);
+      box.querySelector('.lb-close').addEventListener('click', unzoom);
+      box.addEventListener('click', function(e){
+        if(e.target === box || e.target.tagName === 'FIGURE') unzoom(); });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && box.classList.contains('on')) unzoom(); });
+    }
+    opener = btn;
+    var img = box.querySelector('img');
+    img.src = btn.dataset.src;
+    img.alt = btn.dataset.alt;
+    box.querySelector('figcaption').textContent = btn.dataset.alt;
+    box.classList.add('on');
+    box.querySelector('figure').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+    box.querySelector('.lb-close').focus();
+  }
+  function unzoom(){
+    box.classList.remove('on');
+    box.querySelector('img').removeAttribute('src');
+    document.body.style.overflow = '';
+    if(opener) opener.focus();
+  }
+  [home, all].forEach(function(el){
+    if(el) el.addEventListener('click', function(e){
+      var b = e.target.closest('.news-thumb');
+      if(b) zoom(b);
+    });
+  });
 
   fetch('news.json', {cache:'no-cache'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })

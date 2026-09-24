@@ -1,12 +1,15 @@
 {
-  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body and link are all optional.",
+  "note": "Newest first. Add an entry by copying a block and editing it. date is YYYY-MM-DD. tag, body, link and image are all optional. image is the full-size picture shown when the thumbnail is clicked; thumb is the small version shown in the list (falls back to image); image_alt describes it.",
   "items": [
     {
       "date": "2026-10-01",
       "tag": "Conference",
       "title": "Poster accepted at ESMRMB 2026, Girona",
       "body": "Abstract accepted for poster presentation at the 42nd Annual Scientific Meeting of the ESMRMB, Girona, Spain (1–3 October; poster P453 on 1 October). The work reports a 42.4% improvement in SAR efficiency for a metamaterial-integrated bow-tie antenna array at 7T over a geometrically identical array without the metamaterial layer.",
-      "link": "https://drive.google.com/file/d/1p2_akEBKZ47uEH4N4j2DFR8eiAQab4wQ/view?usp=sharing"
+      "link": "https://drive.google.com/file/d/1p2_akEBKZ47uEH4N4j2DFR8eiAQab4wQ/view?usp=sharing",
+      "image": "esmrmb-2026-poster.jpg",
+      "thumb": "esmrmb-2026-poster-thumb.jpg",
+      "image_alt": "ESMRMB 2026 poster P453: Metamaterial-integrated bow-tie antenna arrays for magnetic field shaping at 7T."
     },
     {
       "date": "2026-09-18",
